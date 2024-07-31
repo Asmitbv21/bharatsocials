@@ -6,6 +6,8 @@ import 'package:bharatsocials/domains/sarvaSiksha.dart';
 import 'package:bharatsocials/domains/womenEmp.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -21,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _pageController = PageController(initialPage: currentPage);
 
     // Set up a timer to auto-scroll the banners
-    Timer.periodic(Duration(seconds: 2), (Timer timer) {
+    Timer.periodic(const Duration(seconds: 2), (Timer timer) {
       if (_pageController.hasClients) {
         // Check if the PageController has clients
         if (currentPage < bannerCount - 1) {
@@ -31,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
         }
         _pageController.animateToPage(
           currentPage,
-          duration: Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 200),
           curve: Curves.easeIn,
         );
       }
@@ -49,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Container(
+          SizedBox(
             height: 100,
             child: PageView.builder(
               controller: _pageController,
@@ -57,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 return Container(
                   width: 200,
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.grey,
                     borderRadius: BorderRadius.circular(10),
@@ -69,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -77,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SarvaSiksha()),
+                    MaterialPageRoute(builder: (context) => const SarvaSiksha()),
                   );
                 },
                 child: Container(
@@ -91,11 +93,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(Icons.school, size: 60, color: Colors.blue),
@@ -104,12 +106,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              SizedBox(width: 50),
+              const SizedBox(width: 50),
               InkWell(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => WomenEmp()),
+                    MaterialPageRoute(builder: (context) => const WomenEmp()),
                   );
                 },
                 child: Container(
@@ -123,11 +125,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(Icons.woman, size: 60, color: Colors.purple),
@@ -138,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -150,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => EnvSus()),
+                          MaterialPageRoute(builder: (context) => const EnvSus()),
                         );
                       },
                       child: Container(
@@ -164,11 +166,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
-                              offset: Offset(0, 3),
+                              offset: const Offset(0, 3),
                             ),
                           ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Icon(Icons.eco, size: 60, color: Colors.green),
@@ -178,12 +180,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 50),
+                    const SizedBox(width: 50),
                     InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => HealthHyg()),
+                          MaterialPageRoute(builder: (context) => const HealthHyg()),
                         );
                       },
                       child: Container(
@@ -197,11 +199,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
-                              offset: Offset(0, 3),
+                              offset: const Offset(0, 3),
                             ),
                           ],
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Icon(Icons.medical_services,

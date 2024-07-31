@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class WmnEmpChat extends StatelessWidget {
+  const WmnEmpChat({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Women Empowerment Chat'),
+        title: const Text('Women Empowerment Chat'),
       ),
       body: Column(
         children: [
@@ -19,12 +21,12 @@ class WmnEmpChat extends StatelessWidget {
               },
             ),
           ),
-          Divider(),
+          const Divider(),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -32,12 +34,12 @@ class WmnEmpChat extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
                     // Send message logic here
                   },
-                  child: Text('Send'),
+                  child: const Text('Send'),
                 ),
               ],
             ),

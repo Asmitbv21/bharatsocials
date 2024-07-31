@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class HealthHyg extends StatelessWidget {
+  const HealthHyg({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Health and Hygiene'),
+        title: const Text('Health and Hygiene'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('This is the Health and Hygiene page'),
       ),
     );

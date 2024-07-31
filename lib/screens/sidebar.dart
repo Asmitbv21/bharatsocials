@@ -7,6 +7,8 @@ import 'profile.dart';
 import 'stats.dart';
 
 class Sidebar extends StatelessWidget {
+  const Sidebar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -32,7 +34,7 @@ class Sidebar extends StatelessWidget {
           ),
           ListTile(
             title: Row(
-              children: [
+              children: const [
                 Text(
                   'View Profile',
                   style: TextStyle(
@@ -55,7 +57,7 @@ class Sidebar extends StatelessWidget {
           Divider(color: Colors.black), // Add a divider
           ListTile(
             title: Row(
-              children: [
+              children: const [
                 Text(
                   'Settings',
                   style: TextStyle(
@@ -78,7 +80,7 @@ class Sidebar extends StatelessWidget {
           Divider(color: Colors.black), // Add a divider
           ListTile(
             title: Row(
-              children: [
+              children: const [
                 Text(
                   'Badges',
                   style: TextStyle(
@@ -101,7 +103,7 @@ class Sidebar extends StatelessWidget {
           Divider(color: Colors.black), // Add a divider
           ListTile(
             title: Row(
-              children: [
+              children: const [
                 Text(
                   'Statistics',
                   style: TextStyle(
@@ -124,7 +126,7 @@ class Sidebar extends StatelessWidget {
           Divider(color: Colors.black), // Add a divider
           ListTile(
             title: Row(
-              children: [
+              children: const [
                 Text(
                   'Logout',
                   style: TextStyle(
