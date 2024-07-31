@@ -1,0 +1,249 @@
+import 'package:flutter/material.dart';
+
+class DomainChat extends StatefulWidget {
+  final String domainId;
+  final bool
+      isVolunteer; // Add a boolean flag to check if the current user is a volunteer
+
+  const DomainChat(
+      {super.key, required this.domainId, required this.isVolunteer});
+
+  @override
+  State<DomainChat> createState() => _DomainChatState();
+}
+
+class _DomainChatState extends State<DomainChat> {
+  List<ChatMessage> _messages = [];
+  final _textController = TextEditingController();
+  String? _domainName;
+  String? _ngoName;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadDomainName();
+    _loadNgoName();
+    _loadMessages();
+    _initMessage();
+  }
+
+  Future<void> _loadDomainName() async {
+    // Fetch domain name from database based on domainId
+    _domainName = await DatabaseService().getDomainName(widget.domainId);
+    setState(() {});
+  }
+
+  Future<void> _loadNgoName() async {
+    // Fetch ngo name from database based on domainId
+    _ngoName = await DatabaseService().getNgoName(widget.domainId);
+    setState(() {});
+  }
+
+  Future<void> _loadMessages() async {
+    // Fetch messages from database based on domainId
+    _messages = await DatabaseService().getMessages(widget.domainId);
+    setState(() {});
+  }
+
+  Future<void> _sendMessage() async {
+    // Send message logic here
+    await DatabaseService().sendMessage(widget.domainId, _textController.text);
+    _textController.clear();
+    _loadMessages();
+  }
+
+  void _initMessage() {
+    _textController.text = '''
+NGO Name: $_ngoName
+Event Name: 
+Location: 
+Date & Time: 
+Cause: 
+More Info: 
+''';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title:
+            _domainName != null ? Text(_domainName!) : const Text('Loading...'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: _messages.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  width: MediaQuery.of(context).size.width *
+                      0.8, // Adjust the width to 80% of the screen width
+                  margin: const EdgeInsets.only(left: 5, right: 80, top: 20),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Stack(
+                    children: [
+                      ListTile(
+                        title: Text(_messages[index].message),
+                        subtitle: Text(_messages[index].sender),
+                      ),
+                      Positioned(
+                        top: 0,
+                        right: 0, // Adjust the position of the info button
+                        child: IconButton(
+                          icon: const Icon(Icons.info),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text('Message Info'),
+                                  content: Text(
+                                    'Date & Time: ${_messages[index].sentOn}',
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                      widget.isVolunteer? Positioned(
+                        bottom: 10,
+                        right:
+                            0, // Position the bookmark button at the top right corner
+                        child: IconButton(
+                          icon: const Icon(Icons.bookmark_border),
+                          onPressed: () {
+                            // Add functionality here
+                          },
+                        ),
+                      ): Container(),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+          const Divider(),
+          widget.isVolunteer
+              ? Container() // Show an empty container if the user is a volunteer
+              : Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: _textController,
+                          maxLines: 3,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'Type a message...',
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      ElevatedButton(
+                        onPressed: _sendMessage,
+                        child: const Text('Send'),
+                      ),
+                    ],
+                  ),
+                ),
+        ],
+      ),
+    );
+  }
+}
+
+class ChatMessage {
+  String message;
+  String sender;
+  String sentOn;
+
+  ChatMessage(
+      {required this.message, required this.sender, required this.sentOn});
+}
+
+class DatabaseService {
+  // Replace with your actual database logic
+  Future<String> getDomainName(String domainId) async {
+    // Fetch domain name from database
+    return 'Dummy Domain';
+  }
+
+  Future<String> getNgoName(String domainId) async {
+    // Fetch ngo name from database
+    return 'Dummy NGO';
+  }
+
+  Future<List<ChatMessage>> getMessages(String domainId) async {
+    // Fetch messages from database
+    return [
+      ChatMessage(
+        message: '''
+NGO Name: Dummy NGO
+Event Name: Dummy Event
+Location: Dummy Location
+Date & Time: Dummy Date & Time
+Cause: Dummy Cause
+More Info: Dummy More Info
+''',
+        sender: 'Dummy volunteer name',
+        sentOn: '2023-02-20 14:30:00',
+      ),
+      ChatMessage(
+        message: '''
+NGO Name: Dummy NGO
+Event Name: Dummy Event
+Location: Dummy Location
+Date & Time: Dummy Date & Time
+Cause: Dummy Cause
+More Info: Dummy More Info
+''',
+        sender: 'Dummy volunteer name',
+        sentOn: '2023-02-20 14:30:00',
+      ),
+      ChatMessage(
+        message: '''
+NGO Name: Dummy NGO
+Event Name: Dummy Event
+Location: Dummy Location
+Date & Time: Dummy Date & Time
+Cause: Dummy Cause
+More Info: Dummy More Info
+''',
+        sender: 'Dummy volunteer name',
+        sentOn: '2023-02-20 14:30:00',
+      ),
+      ChatMessage(
+        message: '''
+NGO Name: Dummy NGO
+Event Name: Dummy Event
+Location: Dummy Location
+Date & Time: Dummy Date & Time
+Cause: Dummy Cause
+More Info: Dummy More Info
+''',
+        sender: 'Dummy volunteer name',
+        sentOn: '2023-02-20 14:30:00',
+      ),
+    ];
+  }
+
+  Future<void> sendMessage(String domainId, String message) async {
+    // Send message logic here
+    print('Message sent: $message');
+  }
+}
