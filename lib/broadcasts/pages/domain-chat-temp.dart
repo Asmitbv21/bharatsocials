@@ -103,7 +103,7 @@ More Info:
                                 return AlertDialog(
                                   title: const Text('Message Info'),
                                   content: Text(
-                                    'Date & Time: ${_messages[index].sentOn}',
+                                    'Date: ${_messages[index].sentOn.split(' ')[0]}\nTime: ${_messages[index].sentOn.split(' ')[1]}',
                                   ),
                                   actions: [
                                     TextButton(
@@ -119,17 +119,19 @@ More Info:
                           },
                         ),
                       ),
-                      widget.isVolunteer? Positioned(
-                        bottom: 10,
-                        right:
-                            0, // Position the bookmark button at the top right corner
-                        child: IconButton(
-                          icon: const Icon(Icons.bookmark_border),
-                          onPressed: () {
-                            // Add functionality here
-                          },
-                        ),
-                      ): Container(),
+                      widget.isVolunteer
+                          ? Positioned(
+                              bottom: 10,
+                              right:
+                                  0, // Position the bookmark button at the top right corner
+                              child: IconButton(
+                                icon: const Icon(Icons.bookmark_border),
+                                onPressed: () {
+                                  // Add functionality here
+                                },
+                              ),
+                            )
+                          : Container(),
                     ],
                   ),
                 );

@@ -7,7 +7,7 @@ import 'screens/events.dart';
 import 'screens/sidebar.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +17,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      theme: ThemeData(
+        primaryColor: Color.fromARGB(148, 239, 158, 204), // Update this line
+        scaffoldBackgroundColor: Colors.transparent,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color.fromARGB(0, 255, 255, 255),
+          titleTextStyle: TextStyle(color: Colors.black, fontSize: 25.0),
+        ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor:
+              Color.fromARGB(255, 41, 50, 65), // A deep blue-grey background
+          selectedItemColor: Color.fromARGB(
+              255, 255, 215, 0), // A vibrant yellow-orange for selected items
+          unselectedItemColor: Color.fromARGB(
+              255, 153, 153, 153), // A medium grey for unselected items
+        ),
+      ),
+      home: const MyHomePage(),
     );
   }
 }
@@ -33,10 +49,16 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   final PageController _pageController = PageController();
 
-  final List<Widget> _children = [
+  final List<Widget> _children = const [
     HomeScreen(),
     GroupsScreen(),
     EventsScreen(),
+  ];
+
+  final List<String> _titles = const [
+    'Bharat Socials',
+    'Domain Broadcast Page',
+    'Events',
   ];
 
   void onTabTapped(int index) {
@@ -45,50 +67,59 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Bharat Socials'),
-        titleTextStyle: TextStyle(color: Colors.black, fontSize: 25.0),
-        backgroundColor: Color(0xFFCDEBF7),
-        centerTitle: true,
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+              'assets/bg_images/appbackground.png'), // replace with your image name
+          fit: BoxFit.cover,
+        ),
       ),
-      drawer: Sidebar(),
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView(
-              controller: _pageController,
-              onPageChanged: (index) {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
-              children: _children,
+      child: Scaffold(
+        backgroundColor: Colors.transparent, // Add this line
+        appBar: AppBar(
+          title: Text(_titles[_currentIndex]), // Update this line
+          centerTitle: true,
+        ),
+        drawer: const Drawer(
+          child: Sidebar(
+            backgroundColor: Colors.transparent, // Add this line
+          ),
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                controller: _pageController,
+                onPageChanged: (index) {
+                  setState(() {
+                    _currentIndex = index;
+                  });
+                },
+                children: _children,
+              ),
             ),
-          ),
-          Container(
-            height: 5,
-            color: Colors.grey[300],
-          ),
-          BottomNavigationBar(
-            onTap: onTabTapped,
-            currentIndex: _currentIndex,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.group),
-                label: 'Groups',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.event),
-                label: 'Events',
-              ),
-            ],
-          ),
-        ],
+            const SizedBox(height: 5), // Use SizedBox instead of Container
+            BottomNavigationBar(
+              onTap: onTabTapped,
+              currentIndex: _currentIndex,
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.group),
+                  label: 'Groups',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.event),
+                  label: 'Events',
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

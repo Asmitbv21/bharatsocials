@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 200,
                   margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.grey,
+                    color: Color.fromARGB(208, 239, 158, 204),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
@@ -79,7 +79,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SarvaSiksha()),
+                    MaterialPageRoute(
+                        builder: (context) => const SarvaSiksha()),
                   );
                 },
                 child: Container(
@@ -152,7 +153,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const EnvSus()),
+                          MaterialPageRoute(
+                              builder: (context) => const EnvSus()),
                         );
                       },
                       child: Container(
@@ -185,7 +187,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const HealthHyg()),
+                          MaterialPageRoute(
+                              builder: (context) => const HealthHyg()),
                         );
                       },
                       child: Container(
