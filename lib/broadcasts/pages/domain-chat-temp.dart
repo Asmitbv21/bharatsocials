@@ -66,6 +66,7 @@ More Info:
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title:
             _domainName != null ? Text(_domainName!) : const Text('Loading...'),
@@ -82,9 +83,9 @@ More Info:
                   margin: const EdgeInsets.only(left: 5, right: 80, top: 20),
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white),
                   child: Stack(
                     children: [
                       ListTile(

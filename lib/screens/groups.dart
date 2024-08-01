@@ -29,47 +29,38 @@ class GroupsScreen extends StatelessWidget {
         name: 'Health and Hygiene',
         logo: 'https://via.placeholder.com/100', // placeholder logo URL
       ),
+      Domain(
+        id: 'animalRescue',
+        name: 'Animal Rescue',
+        logo: 'https://via.placeholder.com/100', // placeholder logo URL
+      ),
     ];
 
-    return Scaffold(
-      // appBar: PreferredSize(
-      //   preferredSize: const Size.fromHeight(56), // default height of AppBar
-      //   child: Container(
-      //     decoration: BoxDecoration(
-      //       border: Border(
-      //         top: BorderSide(color: Colors.black, width: 1),
-      //         bottom: BorderSide(color: Colors.black, width: 1),
-      //       ),
-      //     ),
-      //     child: AppBar(
-      //       title: const Center(child: Text('Domain Broadcast Page')),
-      //       backgroundColor:
-      //           Colors.transparent, // make the AppBar background transparent
-      //       elevation: 0, // remove the elevation of the AppBar
-      //     ),
-      //   ),
-      // ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: domains
-                .map((domain) => DomainCard(
-                      domain: domain,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DomainChat(
-                                    domainId: 'domainId',
-                                    isVolunteer: true,
-                                  ) //if value is true then keyboard is disabled
+    return Container(
+      padding: EdgeInsets.zero, // Remove default padding
+      child: Scaffold(
+        body: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: domains
+                  .map((domain) => DomainCard(
+                        domain: domain,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DomainChat(
+                                      domainId: 'domainId',
+                                      isVolunteer: true,
+                                    ) //if value is true then keyboard is disabled
 
-                              ),
-                        );
-                      },
-                    ))
-                .toList(),
+                                ),
+                          );
+                        },
+                      ))
+                  .toList(),
+            ),
           ),
         ),
       ),
@@ -101,14 +92,14 @@ class DomainCard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: CircleAvatar(
                 backgroundImage: NetworkImage(domain.logo),
-                radius: 20,
+                radius: 30,
               ),
             ),
             Expanded(
               child: Text(
                 domain.name,
                 style: const TextStyle(
-                    fontSize: 18, color: Color.fromARGB(255, 0, 0, 0)),
+                    fontSize: 20, color: Color.fromARGB(255, 0, 0, 0)),
               ),
             ),
           ],

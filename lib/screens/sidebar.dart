@@ -164,7 +164,7 @@ class Sidebar extends StatelessWidget {
                     child: Text(
                       'Version 1.0.0',
                       style: TextStyle(
-                        color: Colors.grey,
+                        color: Colors.grey[600],
                         fontSize: 14,
                       ),
                     ),

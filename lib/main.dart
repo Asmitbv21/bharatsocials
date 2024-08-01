@@ -80,6 +80,13 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(_titles[_currentIndex]), // Update this line
           centerTitle: true,
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(4.0), // adjust the height as needed
+            child: Container(
+              color: Colors.black,
+              height: 1.5, // adjust the height as needed
+            ),
+          ),
         ),
         drawer: const Drawer(
           child: Sidebar(
