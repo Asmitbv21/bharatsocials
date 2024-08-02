@@ -7,6 +7,8 @@ import 'profile.dart';
 import 'stats.dart';
 
 class Sidebar extends StatelessWidget {
+  const Sidebar({super.key, required Color backgroundColor});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -33,6 +35,15 @@ class Sidebar extends StatelessWidget {
           ListTile(
             title: Row(
               children: [
+                // Text(
+                //   'View Profile',
+                //   style: TextStyle(
+                //     color: Colors.black,
+                //     fontSize: 18,
+                //   ),
+                // ),
+                //
+                Icon(Icons.person),
                 Text(
                   'View Profile',
                   style: TextStyle(
@@ -40,8 +51,6 @@ class Sidebar extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                Spacer(),
-                Icon(Icons.person),
               ],
             ),
             onTap: () {
@@ -52,10 +61,19 @@ class Sidebar extends StatelessWidget {
               );
             },
           ),
-          Divider(color: Colors.black), // Add a divider
+          Divider(color: const Color.fromARGB(0, 0, 0, 0)), // Add a divider
           ListTile(
             title: Row(
               children: [
+                // Text(
+                //   'Settings',
+                //   style: TextStyle(
+                //     color: Colors.black,
+                //     fontSize: 18,
+                //   ),
+                // ),
+                //
+                Icon(Icons.settings),
                 Text(
                   'Settings',
                   style: TextStyle(
@@ -63,8 +81,6 @@ class Sidebar extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                Spacer(),
-                Icon(Icons.settings),
               ],
             ),
             onTap: () {
@@ -75,10 +91,19 @@ class Sidebar extends StatelessWidget {
               );
             },
           ),
-          Divider(color: Colors.black), // Add a divider
+          Divider(color: const Color.fromARGB(0, 0, 0, 0)), // Add a divider
           ListTile(
             title: Row(
               children: [
+                // Text(
+                //   'Badges',
+                //   style: TextStyle(
+                //     color: Colors.black,
+                //     fontSize: 18,
+                //   ),
+                // ),
+                //
+                Icon(Icons.badge),
                 Text(
                   'Badges',
                   style: TextStyle(
@@ -86,8 +111,6 @@ class Sidebar extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                Spacer(),
-                Icon(Icons.badge),
               ],
             ),
             onTap: () {
@@ -98,10 +121,19 @@ class Sidebar extends StatelessWidget {
               );
             },
           ),
-          Divider(color: Colors.black), // Add a divider
+          Divider(color: const Color.fromARGB(0, 0, 0, 0)), // Add a divider
           ListTile(
             title: Row(
               children: [
+                // Text(
+                //   'Statistics',
+                //   style: TextStyle(
+                //     color: Colors.black,
+                //     fontSize: 18,
+                //   ),
+                // ),
+                //
+                Icon(Icons.insert_chart),
                 Text(
                   'Statistics',
                   style: TextStyle(
@@ -109,8 +141,6 @@ class Sidebar extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                Spacer(),
-                Icon(Icons.insert_chart),
               ],
             ),
             onTap: () {
@@ -121,10 +151,19 @@ class Sidebar extends StatelessWidget {
               );
             },
           ),
-          Divider(color: Colors.black), // Add a divider
+          Divider(color: const Color.fromARGB(0, 0, 0, 0)), // Add a divider
           ListTile(
             title: Row(
               children: [
+                // Text(
+                //   'Logout',
+                //   style: TextStyle(
+                //     color: Colors.red,
+                //     fontSize: 18,
+                //   ),
+                // ),
+                //
+                Icon(Icons.logout, color: Colors.red),
                 Text(
                   'Logout',
                   style: TextStyle(
@@ -132,8 +171,6 @@ class Sidebar extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                Spacer(),
-                Icon(Icons.logout, color: Colors.red),
               ],
             ),
             onTap: () {
@@ -141,7 +178,7 @@ class Sidebar extends StatelessWidget {
               // Add your logout logic here
             },
           ),
-          Divider(color: Colors.black), // Add a divider
+          Divider(color: const Color.fromARGB(0, 0, 0, 0)), // Add a divider
           ListTile(
             title: Center(
               child: Text(

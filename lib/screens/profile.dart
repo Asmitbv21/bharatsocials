@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -34,12 +35,36 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             SizedBox(height: 16),
-            ProfileTextField(label: "Name", controller: _nameController, placeholder: "Name", isEditing: _isEditing),
-            ProfileTextField(label: "Username", controller: _usernameController, placeholder: "Username", isEditing: _isEditing),
-            ProfileTextField(label: "Email", controller: _emailController, placeholder: "example@exaple.com", isEditing: _isEditing),
-            ProfileTextField(label: "Contact no", controller: _contactController, placeholder: "+91 0000000000", isEditing: _isEditing),
-            ProfileTextField(label: "Blood Group", controller: _bloodGroupController, placeholder: "B+", isEditing: _isEditing),
-            ProfileTextField(label: "Gender", controller: _genderController, placeholder: "Female", isEditing: _isEditing),
+            ProfileTextField(
+                label: "Name",
+                controller: _nameController,
+                placeholder: "Name",
+                isEditing: _isEditing),
+            ProfileTextField(
+                label: "Username",
+                controller: _usernameController,
+                placeholder: "Username",
+                isEditing: _isEditing),
+            ProfileTextField(
+                label: "Email",
+                controller: _emailController,
+                placeholder: "example@exaple.com",
+                isEditing: _isEditing),
+            ProfileTextField(
+                label: "Contact no",
+                controller: _contactController,
+                placeholder: "+91 0000000000",
+                isEditing: _isEditing),
+            ProfileTextField(
+                label: "Blood Group",
+                controller: _bloodGroupController,
+                placeholder: "B+",
+                isEditing: _isEditing),
+            ProfileTextField(
+                label: "Gender",
+                controller: _genderController,
+                placeholder: "Female",
+                isEditing: _isEditing),
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
@@ -48,9 +73,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 });
               },
               style: ElevatedButton.styleFrom(
-                  backgroundColor:  Color(0xFFCDEBF7),
-                ),
-
+                backgroundColor: Color(0xFFCDEBF7),
+              ),
               child: Text(_isEditing ? "Save Profile" : "Edit Profile"),
             ),
           ],
@@ -66,7 +90,11 @@ class ProfileTextField extends StatelessWidget {
   final String placeholder;
   final bool isEditing;
 
-  ProfileTextField({required this.label, required this.controller, required this.placeholder, required this.isEditing});
+  ProfileTextField(
+      {required this.label,
+      required this.controller,
+      required this.placeholder,
+      required this.isEditing});
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +113,8 @@ class ProfileTextField extends StatelessWidget {
             readOnly: !isEditing,
             decoration: InputDecoration(
               hintText: placeholder,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
