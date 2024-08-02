@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:bharatsocials/screens/settings.dart';
 import 'package:flutter/material.dart';
 import 'badges.dart';
-import 'settings.dart';
 import 'profile.dart';
 import 'stats.dart';
 
@@ -48,7 +48,7 @@ class Sidebar extends StatelessWidget {
               Navigator.pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfileScreen()),
+                MaterialPageRoute(builder: (context) => ProfilePage()),
               );
             },
           ),

@@ -46,7 +46,7 @@ class GroupsScreen extends StatelessWidget {
               },
               child: Container(
                 width: double.infinity, // Changed to double.infinity
-                height: 80,
+                height: 50,
                 margin: EdgeInsets.symmetric(horizontal: 20), // Added margin
                 decoration: BoxDecoration(
                   color: Colors.purple.withOpacity(0.8), // Reduced opacity
