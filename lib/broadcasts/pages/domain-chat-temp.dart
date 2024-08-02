@@ -70,6 +70,7 @@ More Info:
       appBar: AppBar(
         title:
             _domainName != null ? Text(_domainName!) : const Text('Loading...'),
+        backgroundColor: const Color(0xFFCDEBF7),
       ),
       body: Column(
         children: [

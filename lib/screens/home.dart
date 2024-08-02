@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late PageController _pageController;
   late ScrollController _scrollController;
-  late Timer _bannerTimer;
+  Timer? _bannerTimer;
   int currentPage = 0;
   final int bannerCount = 4;
 
@@ -68,8 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
         )
             .then((_) {
           if (_scrollController.hasClients) {
-            _scrollController
-                .jumpTo(_scrollController.position.minScrollExtent);
+            _scrollController.jumpTo(_scrollController.position.minScrollExtent);
             _startScrolling();
           }
         });
@@ -81,7 +80,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void dispose() {
     _pageController.dispose();
     _scrollController.dispose();
-    _bannerTimer.cancel();
+    _bannerTimer?.cancel(); // Cancel the timer if it's not null
+    _bannerTimer = null; // Set the timer to null after canceling
     super.dispose();
   }
 
@@ -154,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 140,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(162, 255, 255, 255),
+                        color: const Color.fromARGB(162, 255, 255, 255),
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
@@ -165,9 +165,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const <Widget>[
+                        children: <Widget>[
                           Icon(Icons.school, size: 60, color: Colors.blue),
                           Text('Sarva ', style: TextStyle(fontSize: 18)),
                           Text(' Sikhsha ', style: TextStyle(fontSize: 18)),
@@ -189,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 140,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(162, 255, 255, 255),
+                        color: const Color.fromARGB(162, 255, 255, 255),
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
@@ -200,9 +200,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const <Widget>[
+                        children: <Widget>[
                           Icon(Icons.woman, size: 60, color: Colors.purple),
                           Text('     Women ', style: TextStyle(fontSize: 18)),
                           Text(' Empowerment ', style: TextStyle(fontSize: 18)),
@@ -234,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 140,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color.fromARGB(162, 255, 255, 255),
+                              color: const Color.fromARGB(162, 255, 255, 255),
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(
@@ -245,9 +245,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ],
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const <Widget>[
+                              children: <Widget>[
                                 Icon(Icons.eco, size: 60, color: Colors.green),
                                 Text('    Environment ',
                                     style: TextStyle(fontSize: 18)),
@@ -272,7 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 140,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color.fromARGB(162, 255, 255, 255),
+                              color: const Color.fromARGB(162, 255, 255, 255),
                               borderRadius: BorderRadius.circular(10),
                               boxShadow: [
                                 BoxShadow(
@@ -283,9 +283,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ],
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const <Widget>[
+                              children: <Widget>[
                                 Icon(Icons.medical_services,
                                     size: 60, color: Colors.red),
                                 Text('   Health & ',

@@ -8,15 +8,15 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            // Handle back button press
+            Navigator.pop(context);
           },
         ),
-        title: Text("Setting"),
+        title: const Text("Setting"),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -25,7 +25,8 @@ class SettingsScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AccountCenterPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const AccountCenterPage()),
                 );
               },
             ),
@@ -52,7 +53,7 @@ class SettingsItem extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
 
-  SettingsItem({required this.title, required this.onTap});
+  const SettingsItem({super.key, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,7 @@ class SettingsItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         child: Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w500,
           ),
@@ -73,20 +74,22 @@ class SettingsItem extends StatelessWidget {
 }
 
 class AccountCenterPage extends StatelessWidget {
+  const AccountCenterPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text("Account Center"),
+        title: const Text("Account Center"),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -113,7 +116,8 @@ class AccountCenterItem extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
 
-  AccountCenterItem({required this.title, required this.onTap});
+  const AccountCenterItem(
+      {super.key, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +127,7 @@ class AccountCenterItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         child: Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w500,
           ),
