@@ -89,7 +89,7 @@ class Sidebar extends StatelessWidget {
                             TextSpan(
                               text: '   Badges',
                               style: TextStyle(
-                                color: Colors.black,
+                                color: Colors.grey[600],
                                 fontSize: 18,
                               ),
                             ),
