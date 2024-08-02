@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           // Marquee
           Container(
-            color: Color.fromARGB(255, 198, 238, 247),
+            color: Color(0xFFCDEBF7),
             height: 50,
             child: ListView.builder(
               controller: _scrollController,
@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Center(
                     child: Text(
                       events[index],
-                      style: TextStyle(color: const Color.fromARGB(255, 248, 68, 68), fontSize: 20),
+                      style: TextStyle(color: Color.fromARGB(255, 67, 114, 244), fontSize: 22,fontWeight: FontWeight.bold ),
                     ),
                   ),
                 );
@@ -138,8 +138,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 child: Container(
-                  width: 140,
-                  height: 140,
+                  width: 160,
+                  height: 160,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
@@ -170,8 +170,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 child: Container(
-                  width: 140,
-                  height: 140,
+                  width: 160,
+                  height: 160,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
@@ -212,8 +212,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                       child: Container(
-                        width: 140,
-                        height: 140,
+                        width: 160,
+                        height: 160,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -245,8 +245,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                       child: Container(
-                        width: 140,
-                        height: 140,
+                        width: 160,
+                        height: 160,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),

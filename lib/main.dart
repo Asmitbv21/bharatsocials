@@ -45,8 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bharat Socials'),
-        titleTextStyle: TextStyle(color: Colors.black, fontSize: 25.0),
+        title: Text('SOCIALS'),
+        titleTextStyle: TextStyle(color: Colors.black, fontSize: 25.0,fontWeight:FontWeight.bold),
         backgroundColor: Color(0xFFCDEBF7),
         centerTitle: true,
       ),
@@ -70,6 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBar(
             onTap: onTabTapped,
+            selectedItemColor: Color.fromARGB(255, 99, 205, 247),
+           
             currentIndex: _currentIndex,
             items: [
               BottomNavigationBarItem(
@@ -83,6 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
               BottomNavigationBarItem(
                 icon: Icon(Icons.event),
                 label: 'Events',
+                
               ),
             ],
           ),
