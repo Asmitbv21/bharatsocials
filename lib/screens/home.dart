@@ -1,31 +1,45 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+
 import 'package:bharatsocials/domains/envSus.dart';
 import 'package:bharatsocials/domains/healthHyg.dart';
 import 'package:bharatsocials/domains/sarvaSiksha.dart';
 import 'package:bharatsocials/domains/womenEmp.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   late PageController _pageController;
+  late ScrollController _scrollController;
+  late Timer _bannerTimer;
   int currentPage = 0;
-  final int bannerCount = 10;
+  final int bannerCount = 4;
+
+  // Placeholder data for banners and events
+  late List<String> bannerImages;
+  List<String> events = [
+    "Event 1: Health Camp on 5th Aug",
+    "Event 2: Tree Plantation on 12th Aug",
+    "Event 3: Education Workshop on 20th Aug",
+    "Event 4: Women's Empowerment Session on 25th Aug",
+  ];
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: currentPage);
+    _scrollController = ScrollController();
+    _startScrolling();
+
+    // Initialize banner images in the initState
+    bannerImages = List.generate(bannerCount, (index) => 'https://via.placeholder.com/300x150?text=Banner+$index');
 
     // Set up a timer to auto-scroll the banners
-    Timer.periodic(const Duration(seconds: 2), (Timer timer) {
+    _bannerTimer = Timer.periodic(Duration(seconds: 2), (Timer timer) {
       if (_pageController.hasClients) {
-        // Check if the PageController has clients
         if (currentPage < bannerCount - 1) {
           currentPage++;
         } else {
@@ -33,16 +47,35 @@ class _HomeScreenState extends State<HomeScreen> {
         }
         _pageController.animateToPage(
           currentPage,
-          duration: const Duration(milliseconds: 200),
+          duration: Duration(milliseconds: 300),
           curve: Curves.easeIn,
         );
       }
     });
   }
 
+  void _startScrolling() {
+    Future.delayed(Duration(seconds: 2), () {
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(
+          _scrollController.position.maxScrollExtent,
+          duration: Duration(seconds: 10),
+          curve: Curves.linear,
+        ).then((_) {
+          if (_scrollController.hasClients) {
+            _scrollController.jumpTo(_scrollController.position.minScrollExtent);
+            _startScrolling();
+          }
+        });
+      }
+    });
+  }
+
   @override
   void dispose() {
-    _pageController.dispose(); // This line is correct
+    _pageController.dispose();
+    _scrollController.dispose();
+    _bannerTimer.cancel();
     super.dispose();
   }
 
@@ -51,27 +84,49 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          SizedBox(
-            height: 100,
+          // Banner
+          Container(
+            height: 225,
             child: PageView.builder(
               controller: _pageController,
-              itemCount: bannerCount,
+              itemCount: bannerImages.length,
               itemBuilder: (context, index) {
                 return Container(
-                  width: 200,
-                  margin: const EdgeInsets.all(10),
+                  margin: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(208, 239, 158, 204),
+                    color: Colors.grey,
                     borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                    child: Text('Banner $index'),
+                    image: DecorationImage(
+                      image: NetworkImage(bannerImages[index]),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 );
               },
             ),
           ),
-          const SizedBox(height: 50),
+          // Marquee
+          Container(
+            color: Color.fromARGB(255, 198, 238, 247),
+            height: 50,
+            child: ListView.builder(
+              controller: _scrollController,
+              scrollDirection: Axis.horizontal,
+              itemCount: events.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Center(
+                    child: Text(
+                      events[index],
+                      style: TextStyle(color: const Color.fromARGB(255, 248, 68, 68), fontSize: 20),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -79,13 +134,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const SarvaSiksha()),
+                    MaterialPageRoute(builder: (context) => SarvaSiksha()),
                   );
                 },
                 child: Container(
-                  width: 120,
-                  height: 120,
+                  width: 140,
+                  height: 140,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
@@ -94,11 +148,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: const Offset(0, 3),
+                        offset: Offset(0, 3),
                       ),
                     ],
                   ),
-                  child: const Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(Icons.school, size: 60, color: Colors.blue),
@@ -107,17 +161,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              const SizedBox(width: 50),
+              SizedBox(width: 50),
               InkWell(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const WomenEmp()),
+                    MaterialPageRoute(builder: (context) => WomenEmp()),
                   );
                 },
                 child: Container(
-                  width: 120,
-                  height: 120,
+                  width: 140,
+                  height: 140,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
@@ -126,22 +180,23 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: const Offset(0, 3),
+                        offset: Offset(0, 3),
                       ),
                     ],
                   ),
-                  child: const Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(Icons.woman, size: 60, color: Colors.purple),
-                      Text('Women Empowerment', style: TextStyle(fontSize: 18)),
+                      Text('     Women ', style: TextStyle(fontSize: 18)),
+                      Text(' Empowerment ', style: TextStyle(fontSize: 18)),
                     ],
                   ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 50),
+          SizedBox(height: 50),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -153,13 +208,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const EnvSus()),
+                          MaterialPageRoute(builder: (context) => EnvSus()),
                         );
                       },
                       child: Container(
-                        width: 120,
-                        height: 120,
+                        width: 140,
+                        height: 140,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -168,32 +222,31 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
-                              offset: const Offset(0, 3),
+                              offset: Offset(0, 3),
                             ),
                           ],
                         ),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Icon(Icons.eco, size: 60, color: Colors.green),
-                            Text('Environment Sustainability',
-                                style: TextStyle(fontSize: 18)),
+                            Text('    Environment ', style: TextStyle(fontSize: 18)),
+                            Text('   Sustainability', style: TextStyle(fontSize: 18)),
                           ],
                         ),
                       ),
                     ),
-                    const SizedBox(width: 50),
+                    SizedBox(width: 50),
                     InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const HealthHyg()),
+                          MaterialPageRoute(builder: (context) => HealthHyg()),
                         );
                       },
                       child: Container(
-                        width: 120,
-                        height: 120,
+                        width: 140,
+                        height: 140,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -202,17 +255,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
-                              offset: const Offset(0, 3),
+                              offset: Offset(0, 3),
                             ),
                           ],
                         ),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(Icons.medical_services,
-                                size: 60, color: Colors.red),
-                            Text('Health and Hygiene',
-                                style: TextStyle(fontSize: 18)),
+                            Icon(Icons.medical_services, size: 60, color: Colors.red),
+                            Text('   Health & ', style: TextStyle(fontSize: 18)),
+                            Text('Hygiene', style: TextStyle(fontSize: 18)),
                           ],
                         ),
                       ),
