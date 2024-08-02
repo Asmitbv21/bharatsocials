@@ -68,7 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
         )
             .then((_) {
           if (_scrollController.hasClients) {
-            _scrollController.jumpTo(_scrollController.position.minScrollExtent);
+            _scrollController
+                .jumpTo(_scrollController.position.minScrollExtent);
             _startScrolling();
           }
         });
@@ -145,8 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) =>  SarvaSiksha()),
+                      MaterialPageRoute(builder: (context) => SarvaSiksha()),
                     );
                   },
                   child: SizedBox(
@@ -181,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) =>  WomenEmp()),
+                      MaterialPageRoute(builder: (context) => WomenEmp()),
                     );
                   },
                   child: SizedBox(
@@ -225,8 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) =>  EnvSus()),
+                            MaterialPageRoute(builder: (context) => EnvSus()),
                           );
                         },
                         child: SizedBox(
@@ -264,7 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>  HealthHyg()),
+                                builder: (context) => HealthHyg()),
                           );
                         },
                         child: SizedBox(
