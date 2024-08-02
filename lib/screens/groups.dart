@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bharatsocials/broadcasts/pages/domain-chat-temp.dart';
 
-const Color defaultDomainColor = Color.fromARGB(98, 255, 255, 255);
+const Color defaultDomainColor = Color.fromARGB(255, 152, 220, 247);
 
 class GroupsScreen extends StatelessWidget {
   const GroupsScreen({super.key});
@@ -39,6 +39,7 @@ class GroupsScreen extends StatelessWidget {
     return Container(
       padding: EdgeInsets.zero, // Remove default padding
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         body: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -50,7 +51,7 @@ class GroupsScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => DomainChat(
+                                builder: (context) => const DomainChat(
                                       domainId: 'domainId',
                                       isVolunteer: true,
                                     ) //if value is true then keyboard is disabled

@@ -12,167 +12,184 @@ class Sidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
+      child: ListView(
+        padding: EdgeInsets.zero,
         children: [
-          Expanded(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: [
-                UserAccountsDrawerHeader(
-                  accountName: Text(
-                    'Bharat Socials',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  accountEmail: Text(
-                    'bharatsocials@example.com',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  currentAccountPicture: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: Icon(Icons.person, size: 60.0),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 243, 211, 74),
-                  ),
-                ),
-                ListTile(
-                  title: Row(
-                    children: const [
-                      Text(
-                        'View Profile',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(Icons.person),
-                    ],
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ProfileScreen()),
-                    );
-                  },
-                ),
-                Divider(color: Colors.black), // Add a divider
-                ListTile(
-                  title: Row(
-                    children: const [
-                      Text(
-                        'Settings',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(Icons.settings),
-                    ],
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SettingsScreen()),
-                    );
-                  },
-                ),
-                Divider(color: Colors.black), // Add a divider
-                ListTile(
-                  title: Row(
-                    children: const [
-                      Text(
-                        'Badges',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(Icons.badge),
-                    ],
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => BadgesScreen()),
-                    );
-                  },
-                ),
-                Divider(color: Colors.black), // Add a divider
-                ListTile(
-                  title: Row(
-                    children: const [
-                      Text(
-                        'Statistics',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(Icons.insert_chart),
-                    ],
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => StatsScreen()),
-                    );
-                  },
-                ),
-                Divider(color: Colors.black), // Add a divider
-              ],
+          UserAccountsDrawerHeader(
+            accountName: Text(
+              'Bharat Socials',
+              style: TextStyle(color: Colors.black),
+            ),
+            accountEmail: Text(
+              'bharatsocials@example.com',
+              style: TextStyle(color: Colors.black),
+            ),
+            currentAccountPicture: CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Icon(Icons.person, size: 60.0),
+            ),
+            decoration: BoxDecoration(
+              color: Color(0xFFCDEBF7), // Change this to your desired color
             ),
           ),
-          Container(
-            padding: EdgeInsets.only(bottom: 16),
-            child: Column(
+          ListTile(
+            title: Row(
               children: [
-                // Divider(color: Colors.black), // Add a divider
-                ListTile(
-                  tileColor:
-                      Colors.red, // Add this to change the background color
-                  title: Row(
-                    children: const [
-                      Text(
-                        'Logout',
-                        style: TextStyle(
-                          color: Colors.white, // Change the text color to white
-                          fontSize: 18,
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(Icons.logout,
-                          color:
-                              Colors.white), // Change the icon color to white
-                    ],
+                // Text(
+                //   'View Profile',
+                //   style: TextStyle(
+                //     color: Colors.black,
+                //     fontSize: 18,
+                //   ),
+                // ),
+                //
+                Icon(Icons.person),
+                Text(
+                  'View Profile',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
                   ),
-                  onTap: () {
-                    Navigator.pop(context);
-                    // Add your logout logic here
-                  },
-                ),
-
-                ListTile(
-                  title: Center(
-                    child: Text(
-                      'Version 1.0.0',
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
-                  enabled: false, // Make it non-tappable
                 ),
               ],
             ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
+            },
+          ),
+          Divider(color: const Color.fromARGB(0, 0, 0, 0)), // Add a divider
+          ListTile(
+            title: Row(
+              children: [
+                // Text(
+                //   'Settings',
+                //   style: TextStyle(
+                //     color: Colors.black,
+                //     fontSize: 18,
+                //   ),
+                // ),
+                //
+                Icon(Icons.settings),
+                Text(
+                  'Settings',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsScreen()),
+              );
+            },
+          ),
+          Divider(color: const Color.fromARGB(0, 0, 0, 0)), // Add a divider
+          ListTile(
+            title: Row(
+              children: [
+                // Text(
+                //   'Badges',
+                //   style: TextStyle(
+                //     color: Colors.black,
+                //     fontSize: 18,
+                //   ),
+                // ),
+                //
+                Icon(Icons.badge),
+                Text(
+                  'Badges',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BadgesScreen()),
+              );
+            },
+          ),
+          Divider(color: const Color.fromARGB(0, 0, 0, 0)), // Add a divider
+          ListTile(
+            title: Row(
+              children: [
+                // Text(
+                //   'Statistics',
+                //   style: TextStyle(
+                //     color: Colors.black,
+                //     fontSize: 18,
+                //   ),
+                // ),
+                //
+                Icon(Icons.insert_chart),
+                Text(
+                  'Statistics',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => StatsScreen()),
+              );
+            },
+          ),
+          Divider(color: const Color.fromARGB(0, 0, 0, 0)), // Add a divider
+          ListTile(
+            title: Row(
+              children: [
+                // Text(
+                //   'Logout',
+                //   style: TextStyle(
+                //     color: Colors.red,
+                //     fontSize: 18,
+                //   ),
+                // ),
+                //
+                Icon(Icons.logout, color: Colors.red),
+                Text(
+                  'Logout',
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              // Add your logout logic here
+            },
+          ),
+          Divider(color: const Color.fromARGB(0, 0, 0, 0)), // Add a divider
+          ListTile(
+            title: Center(
+              child: Text(
+                'Version 1.0.0',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 14,
+                ),
+              ),
+            ),
+            enabled: false, // Make it non-tappable
           ),
         ],
       ),
