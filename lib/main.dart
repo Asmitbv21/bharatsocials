@@ -57,6 +57,13 @@ class _MyHomePageState extends State<MyHomePage> {
         titleTextStyle: TextStyle(color: Colors.black, fontSize: 25.0),
         backgroundColor: Color(0xFFCDEBF7),
         centerTitle: true,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(1),
+          child: Container(
+            color: Colors.black,
+            height: 2,
+          ),
+        ),
       ),
       drawer: Sidebar(
         backgroundColor: Colors.white,

@@ -53,7 +53,7 @@ class GroupsScreen extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => const DomainChat(
                                       domainId: 'domainId',
-                                      isVolunteer: false,
+                                      isVolunteer: true,
                                     ) //if value is true then keyboard is disabled
 
                                 ),

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'badges.dart';
+// import 'badges.dart';
 import 'settings.dart';
 import 'profile.dart';
 // import 'stats.dart';

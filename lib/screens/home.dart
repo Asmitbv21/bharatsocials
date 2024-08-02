@@ -19,6 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Timer? _bannerTimer;
   int currentPage = 0;
   final int bannerCount = 4;
+  final Color domainColor =
+      Colors.blue; // Change this to change the color of all domains
 
   // Placeholder data for banners and events
   late List<String> bannerImages;
@@ -95,6 +97,37 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: <Widget>[
             // Banner
+            Container(
+              // margin: EdgeInsets.only(bottom: 5),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 198, 238, 247),
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.black,
+                    width: 2,
+                  ),
+                ),
+              ),
+              height: 50,
+              child: ListView.builder(
+                controller: _scrollController,
+                scrollDirection: Axis.horizontal,
+                itemCount: events.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Center(
+                      child: Text(
+                        events[index],
+                        style: const TextStyle(
+                            color: Color.fromARGB(255, 248, 68, 68),
+                            fontSize: 20),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
             SizedBox(
               height: 225,
               child: PageView.builder(
@@ -116,28 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             // Marquee
-            Container(
-              color: const Color.fromARGB(255, 198, 238, 247),
-              height: 50,
-              child: ListView.builder(
-                controller: _scrollController,
-                scrollDirection: Axis.horizontal,
-                itemCount: events.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Center(
-                      child: Text(
-                        events[index],
-                        style: const TextStyle(
-                            color: Color.fromARGB(255, 248, 68, 68),
-                            fontSize: 20),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
+
             const SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

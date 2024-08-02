@@ -72,100 +72,133 @@ More Info:
             _domainName != null ? Text(_domainName!) : const Text('Loading...'),
         backgroundColor: const Color(0xFFCDEBF7),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: _messages.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  width: MediaQuery.of(context).size.width *
-                      0.8, // Adjust the width to 80% of the screen width
-                  margin: const EdgeInsets.only(left: 5, right: 80, top: 20),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+                'assets/texture.jpg'), // replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: _messages.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    width: MediaQuery.of(context).size.width *
+                        0.8, // Adjust the width to 80% of the screen width
+                    margin: const EdgeInsets.only(
+                        left: 20, right: 80, top: 20, bottom: 30),
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.white),
-                  child: Stack(
-                    children: [
-                      ListTile(
-                        title: Text(_messages[index].message),
-                        subtitle: Text(_messages[index].sender),
-                      ),
-                      Positioned(
-                        top: 0,
-                        right: 0, // Adjust the position of the info button
-                        child: IconButton(
-                          icon: const Icon(Icons.info),
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: const Text('Message Info'),
-                                  content: Text(
-                                    'Date: ${_messages[index].sentOn.split(' ')[0]}\nTime: ${_messages[index].sentOn.split(' ')[1]}',
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: const Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          },
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: 2,
+                          blurRadius: 4,
+                          offset: Offset(0, 3),
+                        )
+                      ],
+                    ),
+
+                    child: Stack(
+                      children: [
+                        ListTile(
+                          title: Text(_messages[index].message),
+                          subtitle: Text(_messages[index].sender),
                         ),
-                      ),
-                      widget.isVolunteer
-                          ? Positioned(
-                              bottom: 10,
-                              right:
-                                  0, // Position the bookmark button at the top right corner
-                              child: IconButton(
-                                icon: const Icon(Icons.bookmark_border),
-                                onPressed: () {
-                                  // Add functionality here
+                        Positioned(
+                          top: 0,
+                          right: 0, // Adjust the position of the info button
+                          child: IconButton(
+                            icon: const Icon(Icons.info),
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: const Text('Message Info'),
+                                    content: Text(
+                                      'Date: ${_messages[index].sentOn.split(' ')[0]}\nTime: ${_messages[index].sentOn.split(' ')[1]}',
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('OK'),
+                                      ),
+                                    ],
+                                  );
                                 },
-                              ),
-                            )
-                          : Container(),
-                    ],
-                  ),
-                );
-              },
-            ),
-          ),
-          const Divider(),
-          widget.isVolunteer
-              ? Container() // Show an empty container if the user is a volunteer
-              : Container(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: _textController,
-                          maxLines: 3,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Type a message...',
+                              );
+                            },
                           ),
                         ),
-                      ),
-                      const SizedBox(width: 10),
-                      ElevatedButton(
-                        onPressed: _sendMessage,
-                        child: const Text('Send'),
-                      ),
-                    ],
+                        widget.isVolunteer
+                            ? Positioned(
+                                bottom: 10,
+                                right:
+                                    0, // Position the bookmark button at the top right corner
+                                child: IconButton(
+                                  icon: const Icon(Icons.bookmark_border),
+                                  onPressed: () {
+                                    // Add functionality here
+                                  },
+                                ),
+                              )
+                            : Container(),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            // const Divider(
+            //   color: Colors.black,
+            //   height: 2,
+            // ),
+            widget.isVolunteer
+                ? Container(
+                    // margin: EdgeInsets.only(bottom: 50),
+                    ) // Show an empty container if the user is a volunteer
+                : Container(
+                    padding: const EdgeInsets.only(
+                        left: 10, bottom: 10, right: 10, top: 20),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFCDEBF7), // add this line
+                      // borderRadius: BorderRadius.circular(
+                      //     10), // optional, adds a slight curve to the container
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: _textController,
+                            maxLines: 3,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Type a message...',
+                              filled: true, // add this line
+                              fillColor: Colors.white, // add this line
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        ElevatedButton(
+                          onPressed: _sendMessage,
+                          child: const Text('Send'),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-        ],
+          ],
+        ),
       ),
     );
   }
