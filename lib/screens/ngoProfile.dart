@@ -30,7 +30,7 @@ class VidyaNGOScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Color.fromARGB(255, 125, 217, 239),
+        backgroundColor: Color(0xFFCDEBF7),
         elevation: 0,
       ),
       body: SingleChildScrollView(
