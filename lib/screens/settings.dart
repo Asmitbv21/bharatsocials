@@ -13,7 +13,7 @@ class SettingsScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: const Text("Setting"),
+        title: const Text("Settings"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

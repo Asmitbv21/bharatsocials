@@ -4,33 +4,37 @@ import 'groups.dart';
 import 'events.dart';
 
 void main() {
-  runApp(VidyaNGOApp());
+  runApp(const VidyaNGOApp());
 }
 
 class VidyaNGOApp extends StatelessWidget {
+  const VidyaNGOApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: VidyaNGOScreen(),
     );
   }
 }
 
 class VidyaNGOScreen extends StatelessWidget {
+  const VidyaNGOScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vidya NGO'),
+        title: const Text('Vidya NGO'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Color.fromARGB(255, 125, 217, 239),
+        backgroundColor: const Color.fromARGB(255, 125, 217, 239),
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -104,7 +108,7 @@ class VidyaNGOScreen extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(screenSize.width * 0.04),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 205, 205, 205),
+                      color: const Color.fromARGB(255, 205, 205, 205),
                       borderRadius:
                           BorderRadius.circular(screenSize.width * 0.04),
                     ),
@@ -127,12 +131,12 @@ class VidyaNGOScreen extends StatelessWidget {
                             color: const Color.fromARGB(255, 0, 0, 0),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Align(
                           alignment: Alignment.bottomRight,
                           child: TextButton(
                             onPressed: () {},
-                            child: Text('More'),
+                            child: const Text('More'),
                           ),
                         ),
                       ],
@@ -161,19 +165,19 @@ class VidyaNGOScreen extends StatelessWidget {
                         Row(
                           children: [
                             IconButton(
-                              icon: Icon(Icons.camera_alt_outlined),
+                              icon: const Icon(Icons.camera_alt_outlined),
                               color: Colors.pink,
                               iconSize: screenSize.width * 0.1,
                               onPressed: () {},
                             ),
                             IconButton(
-                              icon: Icon(Icons.alternate_email_outlined),
+                              icon: const Icon(Icons.alternate_email_outlined),
                               color: Colors.blue,
                               iconSize: screenSize.width * 0.1,
                               onPressed: () {},
                             ),
                             IconButton(
-                              icon: Icon(Icons.facebook),
+                              icon: const Icon(Icons.facebook),
                               color: Colors.blueAccent,
                               iconSize: screenSize.width * 0.1,
                               onPressed: () {},
@@ -210,14 +214,14 @@ class VidyaNGOScreen extends StatelessWidget {
               Navigator.pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
               );
               break;
             case 1:
               Navigator.pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => GroupsScreen()),
+                MaterialPageRoute(builder: (context) => const GroupsScreen()),
               );
               break;
             case 2:
@@ -235,7 +239,7 @@ class VidyaNGOScreen extends StatelessWidget {
 }
 
 class ProfileBanner extends StatelessWidget {
-  const ProfileBanner({Key? key}) : super(key: key);
+  const ProfileBanner({super.key});
 
   @override
   Widget build(BuildContext context) {

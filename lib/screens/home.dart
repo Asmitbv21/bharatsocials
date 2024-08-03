@@ -99,12 +99,12 @@ class _HomeScreenState extends State<HomeScreen> {
             // Banner
             Container(
               // margin: EdgeInsets.only(bottom: 5),
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 198, 238, 247),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 198, 238, 247),
                 border: Border(
                   bottom: BorderSide(
-                    color: Colors.black,
-                    width: 2,
+                    color: Color.fromRGBO(0, 0, 0, 0.343),
+                    width: 1,
                   ),
                 ),
               ),

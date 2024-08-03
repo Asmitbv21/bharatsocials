@@ -56,7 +56,7 @@ class Sidebar extends StatelessWidget {
                     );
                   },
                 ),
-                Divider(color: Color.fromARGB(255, 0, 0, 0)), // Add a divider
+                Divider(color: Color.fromARGB(68, 0, 0, 0)), // Add a divider
                 ListTile(
                   title: Row(
                     children: [
@@ -78,7 +78,7 @@ class Sidebar extends StatelessWidget {
                     );
                   },
                 ),
-                Divider(color: Color.fromARGB(246, 0, 0, 0)), // Add a divider
+                Divider(color: Color.fromARGB(68, 0, 0, 0)), // Add a divider
                 ListTile(
                   title: Row(
                     children: [
@@ -107,7 +107,7 @@ class Sidebar extends StatelessWidget {
                   ),
                   enabled: false, // Make it non-tappable
                 ),
-                Divider(color: Color.fromARGB(255, 0, 0, 0)), // Add a divider
+                Divider(color: Color.fromARGB(68, 0, 0, 0)), // Add a divider
                 ListTile(
                   title: Row(
                     children: [
@@ -136,7 +136,7 @@ class Sidebar extends StatelessWidget {
                   ),
                   enabled: false, // Make it non-tappable
                 ),
-                Divider(color: Color.fromARGB(128, 0, 0, 0)), // Add a divider
+                Divider(color: Color.fromARGB(68, 0, 0, 0)), // Add a divider
               ],
             ),
           ),
