@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   final List<String> _titles = [
-    'Socials',
+    'SOCIALS',
     'NGO Broadcast Page',
     'Registered Events Page',
   ];
@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_titles[_currentIndex]),
-        titleTextStyle: TextStyle(color: Colors.black, fontSize: 25.0),
+        titleTextStyle: TextStyle(color: Colors.black, fontSize: 25.0,fontWeight: FontWeight.bold),
         backgroundColor: Color(0xFFCDEBF7),
         centerTitle: true,
         
@@ -90,6 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
             BottomNavigationBar(
               onTap: onTabTapped,
               currentIndex: _currentIndex,
+      
+              selectedItemColor: Color.fromARGB(255, 71, 198, 248),
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home),
