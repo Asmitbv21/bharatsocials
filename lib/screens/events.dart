@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class EventsScreen extends StatelessWidget {
-  const EventsScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,6 +8,7 @@ class EventsScreen extends StatelessWidget {
       body: Stack(
         children: [
           // Background image
+          // You can add your background image here if needed.
 
           // Foreground content
           Padding(
@@ -20,34 +19,34 @@ class EventsScreen extends StatelessWidget {
                 children: [
                   // Three elongated rectangles stacked vertically with multiple details
                   _buildRoundedRectangle(
-                    event: 'Event: ',
-                    ngo: 'NGO: ',
-                    date: 'Date: ',
-                    venue: 'Venue: ',
+                    event: 'Event: Charity Run',
+                    ngo: 'NGO: Helping Hands',
+                    date: 'Date: 12th March 2023',
+                    venue: 'Venue: City Park',
                   ),
                   _buildRoundedRectangle(
-                    event: 'Event: ',
-                    ngo: 'NGO: ',
-                    date: 'Date: ',
-                    venue: 'Venue: ',
+                    event: 'Event: Food Drive',
+                    ngo: 'NGO: Food for All',
+                    date: 'Date: 25th April 2023',
+                    venue: 'Venue: Community Center',
                   ),
                   _buildRoundedRectangle(
-                    event: 'Event:',
-                    ngo: 'NGO: ',
-                    date: 'Date: ',
-                    venue: 'Venue: ',
+                    event: 'Event: Environmental Cleanup',
+                    ngo: 'NGO: Green Earth',
+                    date: 'Date: 15th May 2023',
+                    venue: 'Venue: Beachside',
                   ),
                   _buildRoundedRectangle(
-                    event: 'Event:',
-                    ngo: 'NGO: ',
-                    date: 'Date: ',
-                    venue: 'Venue: ',
+                    event: 'Event: Blood Donation Camp',
+                    ngo: 'NGO: Red Cross',
+                    date: 'Date: 10th June 2023',
+                    venue: 'Venue: Hospital',
                   ),
                   _buildRoundedRectangle(
-                    event: 'Event: ',
-                    ngo: 'NGO: ',
-                    date: 'Date: ',
-                    venue: 'Venue: ',
+                    event: 'Event: Education Drive',
+                    ngo: 'NGO: Educate All',
+                    date: 'Date: 20th July 2023',
+                    venue: 'Venue: School',
                   ),
                 ],
               ),
@@ -70,17 +69,23 @@ class EventsScreen extends StatelessWidget {
           vertical: 8.0), // Increased spacing between rectangles
       width: double.infinity, // Takes full width of the parent
       decoration: BoxDecoration(
-        color: const Color.fromARGB(192, 123, 194, 248), // Background color
+        color: Color.fromRGBO(152, 220, 247, 0.762), // Background color
         borderRadius: BorderRadius.circular(16.0), // Rounded corners
         boxShadow: [
           BoxShadow(
-            color: const Color.fromARGB(255, 34, 13, 13)
-                .withOpacity(0.1), // Shadow color
-            spreadRadius: 2, // Spread radius
-            blurRadius: 5, // Blur radius
-            offset: const Offset(0, 3), // Shadow position (x, y)
+            color:
+                Color.fromARGB(255, 8, 7, 7).withOpacity(0.2), // Shadow color
+            spreadRadius: 1, // Spread radius
+            blurRadius: 4, // Blur radius for more prominent shadow
+            offset: Offset(6, 6), // Shadow position (x, y)
           ),
         ],
+        border: Border.all(
+          // Adding a mild border
+          color: Color.fromARGB(255, 128, 131, 136)
+              .withOpacity(0.5), // Border color with opacity
+          width: 0.9, // Border width
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -91,41 +96,41 @@ class EventsScreen extends StatelessWidget {
           children: [
             Text(
               event,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize:
-                    18.0, // Slightly larger text size for better readability
-                fontWeight: FontWeight.bold,
-                color: Colors.black54,
+                    20.0, // Slightly larger text size for better readability
+                fontWeight: FontWeight.normal,
+                color: Color.fromARGB(255, 0, 0, 0),
               ),
             ),
-            const SizedBox(height: 6.0), // Increased spacing between text
+            SizedBox(height: 6.0), // Increased spacing between text
             Text(
               ngo,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize:
-                    18.0, // Slightly larger text size for better readability
-                fontWeight: FontWeight.bold,
-                color: Colors.black54,
+                    20.0, // Slightly larger text size for better readability
+                fontWeight: FontWeight.normal,
+                color: Color.fromARGB(255, 0, 0, 0),
               ),
             ),
-            const SizedBox(height: 8.0), // Increased spacing between text
+            SizedBox(height: 8.0), // Increased spacing between text
             Text(
               date,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize:
-                    18.0, // Slightly larger text size for better readability
-                fontWeight: FontWeight.bold,
-                color: Colors.black54,
+                    20.0, // Slightly larger text size for better readability
+                fontWeight: FontWeight.normal,
+                color: Color.fromARGB(255, 0, 0, 0),
               ),
             ),
-            const SizedBox(height: 6.0), // Increased spacing between text
+            SizedBox(height: 6.0), // Increased spacing between text
             Text(
               venue,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize:
-                    18.0, // Slightly larger text size for better readability
-                fontWeight: FontWeight.bold,
-                color: Colors.black54,
+                    20.0, // Slightly larger text size for better readability
+                fontWeight: FontWeight.normal,
+                color: Color.fromARGB(255, 0, 0, 0),
               ),
             ),
           ],
@@ -134,7 +139,3 @@ class EventsScreen extends StatelessWidget {
     );
   }
 }
-
-void main() => runApp(const MaterialApp(
-      home: EventsScreen(),
-    ));
