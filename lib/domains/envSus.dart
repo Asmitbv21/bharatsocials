@@ -8,11 +8,13 @@ class EnvSus extends StatelessWidget {
     {'name': 'Snehalaya', 'location': 'Pune', 'color': '0xFFE6E6E6'},
   ];
 
+   EnvSus({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Environment and Sustainabilty'),
+        title: const Text('Environment and Sustainabilty'),
       ),
       body: ListView.builder(
         itemCount: ngos.length,
@@ -22,14 +24,14 @@ class EnvSus extends StatelessWidget {
               color: Color(int.parse(ngos[index]['color']!)),
               borderRadius: BorderRadius.circular(10), // Rounded corners
             ),
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: ListTile(
               title: Text(
                 ngos[index]['name']!,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Text('Location: ${ngos[index]['location']}'),
-              trailing: Icon(Icons.arrow_forward),
+              trailing: const Icon(Icons.arrow_forward),
               onTap: () {
                 // Navigate to profile screen
               },

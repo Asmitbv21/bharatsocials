@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
           preferredSize: Size.fromHeight(1),
           child: Container(
             color: Colors.black,
-            height: 2,
+            height: 1,
           ),
         ),
       ),

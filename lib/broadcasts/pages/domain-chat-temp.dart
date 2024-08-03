@@ -73,7 +73,7 @@ More Info:
         backgroundColor: const Color(0xFFCDEBF7),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
                 'assets/texture.jpg'), // replace with your image path
@@ -101,7 +101,7 @@ More Info:
                           color: Colors.grey.withOpacity(0.3),
                           spreadRadius: 2,
                           blurRadius: 4,
-                          offset: Offset(0, 3),
+                          offset: const Offset(0, 3),
                         )
                       ],
                     ),
@@ -170,7 +170,7 @@ More Info:
                 : Container(
                     padding: const EdgeInsets.only(
                         left: 10, bottom: 10, right: 10, top: 20),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0xFFCDEBF7), // add this line
                       // borderRadius: BorderRadius.circular(
                       //     10), // optional, adds a slight curve to the container
